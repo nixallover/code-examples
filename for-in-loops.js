@@ -15,12 +15,23 @@ if (typeof Object.prototype.clone === 'undefined') {
 console.log('Right way');
 for (var i in man) {
 	if (man.hasOwnProperty(i)) {
-		console.log(i, ":", man[i]);
+		console.log(i, ':', man[i]);
 	}
 }
 
 // if you don't filter, you will probably get undesired properties
 console.log('Wrong way');
 for (var i in man) {
-	console.log(i, ":", man[i]);
+	console.log(i, ':', man[i]);
+}
+
+// use a local var to "cache" the property
+console.log('Avoid addl property lookups');
+var i,
+	hasOwn = Object.prototype.hasOwnProperty;
+
+for (i in man){
+	if(hasOwn.call(man, i){
+		console.log(i, ':', man[i]);
+	})
 }

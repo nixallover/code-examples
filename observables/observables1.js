@@ -17,6 +17,10 @@ console.log('observables are just functions!');
  * each operator returns a new observable, or "stream"
  */
 
-// example: timer that waits 3 seconds, then ticks every 1 second
+// example: timer that waits 3 seconds, then ticks every 1 second, forever
+// const source = Rx.Observable.timer(3000, 1000);
+// const subscribe = source.subscribe(val => console.log(val));
+
+// example: timer that waits 3 seconds, then ticks every 1 second, forever
 const source = Rx.Observable.timer(3000, 1000);
 const subscribe = source.subscribe(val => console.log(val));

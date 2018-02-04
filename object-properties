@@ -1,0 +1,8 @@
+var banana = {
+    color: 'yellow',
+    shape: 'crescent'
+};
+
+for(var prop in banana){
+    console.log(prop);
+}

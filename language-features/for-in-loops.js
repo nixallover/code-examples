@@ -31,7 +31,7 @@ var i,
 	hasOwn = Object.prototype.hasOwnProperty;
 
 for (i in man){
-	if(hasOwn.call(man, i){
+	if(hasOwn.call(man, i) {
 		console.log(i, ':', man[i]);
 	})
 }

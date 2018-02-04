@@ -6,11 +6,11 @@ var findNodes = function(callback) {
 		found;
 
 	// check if callback is callable!!
-	if(typeof callback !== "function"){
+	if (typeof callback !== "function") {
 		callback = false;
 	}
 
-	while(i){
+	while (i) {
 		 i -= 1;
 		 // logic here
 		 if(callback){

@@ -19,7 +19,7 @@ for (var i in man) {
 	}
 }
 
-// if you don't filter, you will probably get undesired properties
+// if you don't filter, you will get undesired properties
 console.log('Wrong way');
 for (var i in man) {
 	console.log(i, ':', man[i]);
@@ -27,11 +27,10 @@ for (var i in man) {
 
 // use a local var to "cache" the property
 console.log('Avoid addl property lookups');
-var i,
-	hasOwn = Object.prototype.hasOwnProperty;
+const hasOwn = Object.prototype.hasOwnProperty;
 
-for (i in man){
-	if(hasOwn.call(man, i) {
+for (const i in man){
+	if (hasOwn.call(man, i)) {
 		console.log(i, ':', man[i]);
-	})
+	}
 }

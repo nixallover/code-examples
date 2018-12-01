@@ -1,57 +1,81 @@
-// quicksort is a pretty efficient sorting algorithm
-// time complexity - average 0(nlogn), worst 0(n^2)
-// really depends on choosing a good pivot
+/** QUICKSORT
+ * Sorts an array by picking a pivot and moving a left
+ * and right pointer progressively towards the center of the array,
+ * swapping numbers to the higher or lower end, depending on
+ * their value. Once the center is reached, the array will be 
+ * partitioned, and the process is repeated on the 2 sub-arrays.
+ * Continues recursively until the array is sorted.
+ * 
+ * Time complexity: best case - 0(n * log(n)), worst case 0(n^2)
+ * Depends on how good the pivot is - a value that's roughly in the
+ * middle is best.
+ * 
+ * Adapted from https://www.youtube.com/watch?v=SLauY6PpjW4
+ */
 
-// quickSort(arr, 0, arr.length-1);
-
-function quickSort(arr) {
-  return _quickSort(arr, 0, arr.length-1);
+function swap(arr, left, right) {
+  console.log(`swap ${left} and ${right}`);
+  let tmp = arr[left];
+  arr[left] = arr[right];
+  arr[right] = tmp;
 }
 
-function _quickSort(arr, left, right) {
-  if (left >= right) { return; }
-  // choose halfway point
-  let halfway = Math.floor((left + right) / 2);
-  let pivot = arr[halfway];
-  // returns dividing point between left and right side?
-  let index = partition(arr, left, right, pivot);
+function partition(arr, pivotValue, left, right) {
+  console.log('partition: ', arr, pivotValue, `I left: ${left}, right: ${right}`);
 
-  console.log('quicksort', arr, left, right, pivot, index);
-
-  quickSort(arr, left, index-1);
-  quickSort(arr, index, right);
-}
-
-function partition(arr, left, right, pivot) {
-  //console.log('partition', arr, left, right, pivot);
+  // while we're still moving the pivots inward
   while (left <= right) {
-    /** while left is less than pivot, keep moving left */
-    while (arr[left] < pivot) {
+    // if the left element is on the correct side of the pivot, move further left
+    while (arr[left] < pivotValue) {
       left++;
     }
-    /** do the opposite on the right side */
-    while (arr[right] > pivot) {
+
+    // if the right element is on the correct side of the pivot, move further right
+    while (arr[right] > pivotValue) {
       right--;
     }
 
+    // when it's made it to this point, the elements in focus are on
+    // the wrong side, and must be swapped
     if (left <= right) {
-      arr = swap(arr, left, right);
+      swap(arr, left, right);
       left++;
       right--;
     }
   }
+  //console.log('partition end: ', arr, `I left: ${left}, right: ${right}`);
+
+  // return the partition point
   return left;
 }
 
-function swap(arr, left, right){
-  let tmp = arr[left];
-  arr[left] = arr[right];
-  arr[right] = tmp;
+function _quickSort(arr, left, right) {
+  console.log('quickSort: ', arr, `I left: ${left}, right: ${right}`);
+  let middle, pivotValue, index;
+
+  // base case - indices should not cross each other!
+  if (left >= right) {
+    return;
+  }
+
+  middle = Math.floor((left + right)/2);
+  // find the value of the middle of piece of the array we're evaluating
+  pivotValue = arr[middle];
+  index = partition(arr, pivotValue, left, right);
+
+  _quickSort(arr, left, index-1);
+  _quickSort(arr, index, right);
+
   return arr;
 }
 
-let arr1 = [1314,343,24,2,5,1,100,1313];
+function quickSort(arr) {
+  return _quickSort(numbers, 0, numbers.length-1);
+}
 
-console.log('start', arr1);
-quickSort(arr1);
-console.log('done', arr1);
+/** test it out! */
+const numbers = [700, 50, 100, 632, 4, 103, 804, 502, 1, 378, 6, 104, 505];
+
+console.log('QUICKSORT START:', numbers);
+const sortedNumbers = quickSort(numbers);
+console.log('QUICKSORT END:', sortedNumbers);

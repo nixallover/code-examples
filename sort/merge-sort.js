@@ -46,7 +46,7 @@ function merge(left, right) {
 }
 
 /** test it out! */
-const numbers = [700, 50, 100, 632, 4, 103, 804, 502, 1, 378];
+const numbers = [700, 50, 100, 632, 4, 103, 804, 502, 1, 378, 6, 104, 102];
 
 console.log('BEFORE:', numbers);
 const sortedNumbers = mergeSort(numbers);

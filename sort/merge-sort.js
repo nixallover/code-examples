@@ -4,6 +4,8 @@
  * Time complexity: O(n*log(n))
  */
 
+/* This function splits the array in half if it can, then recurses on
+each of the halves */
 function mergeSort(arr) {
   console.log('mergeSort: ', arr);
 
@@ -21,6 +23,7 @@ function mergeSort(arr) {
   );
 }
 
+/* This function sorts and merges 2 arrays, and returns them as one */
 function merge(left, right) {
   console.log('merge: ', left, right);
 
@@ -28,6 +31,7 @@ function merge(left, right) {
   let indexLeft = 0;
   let indexRight = 0;
 
+  /* while there's still something on the left/right side to iterate through*/
   while(indexLeft < left.length && indexRight < right.length) {
     if (left[indexLeft] < right[indexRight]) {
       result.push(left[indexLeft]);

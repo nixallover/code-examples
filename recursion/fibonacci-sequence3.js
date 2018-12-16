@@ -1,6 +1,12 @@
 /**
  * FIBONACCI SEQUENCE WITH MEMOIZATION
- * taken from cracking the coding interview
+ * Top-down Dynamic Programming (or Memoization)
+ * 
+ * Note: some people call top-down dynamic programming
+ * "memoization" and only use "dynamic programming" to
+ * refer to bottom-up work. CTCI didn't do that.
+ * 
+ * Taken from cracking the coding interview p134
  */
 
 function fibonacci(i) {
